@@ -1,1 +1,69 @@
-<div>Home</div>
+<app-header></app-header>
+  <main>
+    <div class="slider">
+      <ul>
+        <li class="slider__item slider__show"><img src="../../assets/img/item-1.png" alt="slider image"></li>
+        <li class="slider__item"><img src="../../assets/img/item-2.png" alt="slider image"></li>
+        <li class="slider__item"><img src="../../assets/img/item-3.png" alt="slider imaege"></li>
+      </ul>
+      <div class="slider__arrow-right">
+        <i class="fas fa-long-arrow-alt-right fa-2x" (click) = "handleClick()"></i>
+      </div>
+    </div>
+    <div class="prod-card">
+      <h2>Some title text must be here maybe second  line</h2>
+      <p class="prod-card__text-bold">from
+        <span class="prod-card__name">Alis Kim </span>
+        <span class="prod-card__money">18000 $</span>
+      </p>
+      <p>Some description text from WYSIWYG editer</p>
+      <p>Can be <span class="prod-card__text-bold">BOLD</span><span class="prod-card__text-italic"> Italic</span></p>
+      <ul class="prod-card__text-bold">
+        <li>Can have  list:<ul>
+          <li>- first</li>
+          <li>- second</li></ul>
+        </li>
+      </ul>
+      <p class="prod-card__text-bold">And anything from WYSIWYG editor</p>
+      <ul>
+        <li class="prod-card__text-bold">Some line</li>
+        <li>Some line</li>
+        <li class="prod-card__text-italic">Some line</li>
+      </ul>
+      <p class="prod-card__text-bold">Finished on this line.</p>
+    </div>
+    <div class="chat">
+      <div class="chat__title">
+        <h3>Chat
+          <span class="chat__sub-title">with
+            <span class="chat__user-name">Alis Kim</span>
+          </span>
+          <div class="chat__square"></div>
+        </h3>
+      </div>
+      <div class="chat__item-1"><img src="../../assets/img/ava_2-sm.png" alt="avatar" class="img__circle" ><span>One line chat message</span></div>
+      <div class="chat__item-2"><span>Multi line chat message. Some  text for multi line message. What is your name.
+        Oh sorry. My bad, your name I think  Alis. Right? Please send me your contacts.
+        May be your facebook page or some think alse. How much cost this t shirt?</span>
+        <img src="../../assets/img/ava_1-sm.png" alt="avatar" class="img__circle">
+      </div>
+      <div class="chat__search">
+        <input type="text" placeholder="Type some text here" />
+        <i class="fas fa-paper-plane"></i>
+      </div>
+    </div>
+    <div class="connected">
+      <h3>Connected</h3>
+      <div class="connected__item">
+        <img src="../../assets/img/ava_2.png" alt="avatar" class="img__circle">
+        <span>Alis Kim</span>
+      </div>
+      <div class="connected__item">
+        <img src="../../assets/img/ava_1.png" alt="avatar" class="img__circle">
+        <span>Kim Evans</span>
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <p class="footer footer__text">2017 - front-end labs Light IT</p>
+  </footer>

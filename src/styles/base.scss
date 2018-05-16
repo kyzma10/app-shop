@@ -1,0 +1,24 @@
+@import "./mixins";
+@import "./const";
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+}
+
+ul, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  @include md { font-size: 52.5%; }
+  font-family: $font-primery;
+}
