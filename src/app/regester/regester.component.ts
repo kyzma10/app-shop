@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./regester.component.scss']
 })
 
-export class Regester {
+export class RegesterComponent {
 
 }

@@ -8,7 +8,7 @@ import { DataService } from "../services/data.service";
   encapsulation: ViewEncapsulation.None
 })
 
-export class ListPage implements OnInit {
+export class ListPageComponent implements OnInit {
   @Input() data: DataService = new DataService();
 
   ngOnInit() {
