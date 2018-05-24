@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import { ProductService } from '../services/product.service';
+import { ProductModel } from "../models/product.model";
 
 @Component({
   selector: 'product-list',
@@ -6,4 +8,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./product-list.component.scss']
 })
 
-export class ProductListComponent {}
+export class ProductListComponent implements OnInit, OnDestroy {
+  public products: ProductModel[] = [];
+
+  constructor(private productService: ProductService) {}
+
+  ngOnInit() {
+    this.productService.getProduct().subscribe((res: ProductModel[]) => {
+      this.products = res;
+    });
+  }
+
+  public loadMore() {
+    this.productService.getProduct().subscribe((res: ProductModel[]) => {
+      res.forEach(item => this.products.push(item));
+    });
+  }
+
+  ngOnDestroy() {
+    this.products = [];
+  }
+}

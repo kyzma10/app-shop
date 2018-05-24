@@ -7,14 +7,15 @@ import { LoginComponent } from './login/login.component';
 import { RegesterComponent } from './regester/regester.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { TestPageComponent } from './test_page/test-page.component';
-import { ListPageComponent } from "./list_page/list-page.component";
+import { ListPageComponent } from './list_page/list-page.component';
 import {ProductListComponent} from './product_list/product-list.component';
-import {ProductItemComponent} from './product_list/product_item/product-item.component';
 
-import { ScrollTop } from "./directives/scrollTop.directive";
-import { ScrollInf } from "./directives/scrollInf.directive";
+import { ScrollTop } from './directives/scrollTop.directive';
+import { ScrollInf } from './directives/scrollInf.directive';
 
-import { DataService } from "./services/data.service"
+import { DataService } from './services/data.service'
+import { ProductService } from './services/product.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,14 +27,17 @@ import { DataService } from "./services/data.service"
     TestPageComponent,
     ListPageComponent,
     ProductListComponent,
-    ProductItemComponent,
     ScrollTop,
     ScrollInf
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
-  providers: [DataService],
+  providers: [
+    DataService,
+    ProductService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

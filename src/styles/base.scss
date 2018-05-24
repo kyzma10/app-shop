@@ -22,3 +22,10 @@ html {
   @include md { font-size: 52.5%; }
   font-family: $font-primery;
 }
+
+.img {
+
+  &__circle {
+    border-radius: 50%;
+  }
+}
