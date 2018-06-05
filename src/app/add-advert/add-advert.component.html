@@ -1,0 +1,35 @@
+<section class="add-advert">
+  <form (ngSubmit)="onSubmit()" [formGroup]="addAdvertForm" novalidate>
+    <div class="form-group">
+      <label for="theme">Theme: </label>
+      <input type="text" name="theme" class="form-control" formControlName="theme">
+    </div>
+    <div class="form-group">
+      <label for="text">Your text: </label>
+      <textarea type="text" name="text" class="form-control" formControlName="text"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="price">Price: </label>
+      <input type="text" name="price" class="form-control" formControlName="price">
+    </div>
+    <div class="form-group">
+      <label for="currency">Currency: </label>
+      <input type="number" name="currency" class="form-control" formControlName="currency">
+    </div>
+    <div class="form-group">
+      <label for="contract_price">Contract price: </label>
+      <input type="checkbox" name="contract_price" formControlName="contract_price">
+    </div>
+    <div class="form-group">
+      <label for="location">Location: </label>
+      <input type="text" name="location" class="form-control" formControlName="location">
+    </div>
+    <div class="form-group">
+      <label for="control">Is active: </label>
+      <input type="checkbox" name="control" formControlName="control">
+    </div>
+    <button class="btn" [disabled]="!addAdvertForm.valid">Add advert</button>
+    <p>{{ addAdvertForm.value | json }}</p>
+    <p *ngIf="addAdvertForm.invalid && addAdvertForm.controls['theme'].touched">No correct</p>
+  </form>
+</section>

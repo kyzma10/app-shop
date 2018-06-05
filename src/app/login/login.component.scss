@@ -96,12 +96,7 @@ button {
     position: absolute;
     bottom: 0;
     width: 100%;
-    color: $color-button;
     text-align: center;
     padding-bottom: 2rem;
-
-    &__text {
-      font-size: 1.4rem;
-    }
   }
 }

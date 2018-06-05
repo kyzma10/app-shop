@@ -10,8 +10,8 @@ import { TestPageComponent } from './test-page/test-page.component';
 import { ListPageComponent } from './list-page/list-page.component';
 import { ProductListComponent } from './product-list/product-list.component';
 
-import { ScrollTop } from './directives/scrollTop.directive';
-import { ScrollInf } from './directives/scrollInf.directive';
+import { ScrollTop } from './shared/directives/scrollTop.directive';
+import { ScrollInf } from './shared/directives/scrollInf.directive';
 
 import { DataService } from './services/data.service'
 import { ProductService } from './services/product.service';
@@ -19,6 +19,10 @@ import { ProductService } from './services/product.service';
 import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import {ProductResolver} from "./services/product-resolver";
+import { AddAdvertComponent } from './add-advert/add-advert.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,16 +36,21 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ProductListComponent,
     ScrollTop,
     ScrollInf,
-    NotFoundComponent
+    NotFoundComponent,
+    FooterComponent,
+    AddAdvertComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     DataService,
-    ProductService
+    ProductService,
+    ProductResolver
   ],
   bootstrap: [AppComponent]
 })

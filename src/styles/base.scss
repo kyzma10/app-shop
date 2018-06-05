@@ -29,3 +29,18 @@ html {
     border-radius: 50%;
   }
 }
+
+.btn {
+  font-size: 1.6rem;
+  background-color: $color-button;
+  color: $color-text-button;
+  text-align: center;
+  padding: 1rem 2rem;
+  border-radius: 3rem;
+  border: none;
+  outline: none;
+}
+
+form {
+  outline: none;
+}
