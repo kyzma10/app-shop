@@ -17,20 +17,19 @@ export class LoginComponent implements OnInit{
     this.loginForm = new FormGroup({
       email: new FormControl('', [
         Validators.required,
-        Validators.email,
         Validators.pattern(/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/)
       ]),
       password: new FormControl('', [
         Validators.required,
-        Validators.minLength(4),
-        Validators.pattern(/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/)
+        Validators.minLength(4)
       ])
     });
 
     this.signForm = new FormGroup({
-      email: new FormControl('',
-        [Validators.required,
-          Validators.email]),
+      email: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/)
+      ]),
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(4)])
