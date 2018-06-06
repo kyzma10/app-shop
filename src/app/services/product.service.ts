@@ -9,7 +9,7 @@ export class ProductService {
   private limit: number = 4;
   constructor(private http: HttpClient) {}
 
-  public getProduct() {
+  public getProducts() {
     return this.http.get(`http://light-it-04.tk/api/adverts?limit=${this.limit}`)
       .pipe(
         map((response: ResponseModel) => {

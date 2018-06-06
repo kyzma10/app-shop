@@ -13,6 +13,6 @@ import {HttpClient} from "@angular/common/http";
 export class ProductResolver implements Resolve<any> {
   constructor(private productService: ProductService) {}
   resolve() {
-    return this.productService.getProduct();
+    return this.productService.getProducts();
   }
 }

@@ -14,13 +14,13 @@ export class ProductListComponent implements OnInit, OnDestroy {
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
-    this.productService.getProduct().subscribe((res: ProductModel[]) => {
+    this.productService.getProducts().subscribe((res: ProductModel[]) => {
       this.products = res;
     });
   }
 
   public loadMore() {
-    this.productService.getProduct().subscribe((res: ProductModel[]) => {
+    this.productService.getProducts().subscribe((res: ProductModel[]) => {
       res.forEach(item => this.products.push(item));
     });
   }

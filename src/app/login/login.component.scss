@@ -52,6 +52,21 @@ button {
       border: none;
       outline: none;
       margin-top: 1.5rem;
+      padding: .5rem 0;
+      border-bottom: 4px solid $color-button;
+      color: $color-white;
+    }
+
+    input::-webkit-input-placeholder {
+      color: $color-white;
+    }
+
+    input::-moz-placeholder {
+      color: $color-white;
+    }
+
+    input::placeholder {
+      color: $color-white;
     }
 
     &__logo {
@@ -72,7 +87,7 @@ button {
       }
 
       &__in {
-        border-bottom: 4px solid $color-border;
+        //border-bottom: 4px solid $color-border;
       }
 
       &__up {
@@ -88,8 +103,19 @@ button {
     }
 
     &__input {
-      border-bottom: 4px solid $color-button;
+      //border-bottom: 4px solid $color-button;
+
+      input {
+        display: block;
+        width: 100%;
+        background: none;
+        outline: none;
+      }
     }
+  }
+
+  .active {
+    border-bottom: 4px solid $color-border;
   }
 
   &__footer {
@@ -99,4 +125,9 @@ button {
     text-align: center;
     padding-bottom: 2rem;
   }
+}
+
+input.ng-invalid.ng-touched {
+  border-bottom: 4px solid red;
+  //border: 3px solid red;
 }
