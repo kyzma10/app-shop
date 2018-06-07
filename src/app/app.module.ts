@@ -13,16 +13,18 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ScrollTop } from './shared/directives/scrollTop.directive';
 import { ScrollInf } from './shared/directives/scrollInf.directive';
 
-import { DataService } from './services/data.service'
+import { DataService } from './services/data.service';
 import { ProductService } from './services/product.service';
 
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import {ProductResolver} from "./services/product-resolver";
+import {ProductResolver} from './services/product-resolver';
 import { AddAdvertComponent } from './add-advert/add-advert.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AuthService} from './core/auth.service';
+import {AuthInterceptor} from './core/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,13 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
   providers: [
     DataService,
     ProductService,
-    ProductResolver
+    ProductResolver,
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

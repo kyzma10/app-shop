@@ -50,6 +50,13 @@
           <label for="password" ></label>
           <input type="password" name="password" placeholder="  Password" formControlName="password">
         </div>
+        <div class="login__sidebar__input">
+          <label for="confirm_password" ></label>
+          <input type="password"
+                 name="password"
+                 placeholder="  Confirm Password"
+                 formControlName="confirm_password">
+        </div>
         <button type="submit" class="login__sidebar__login" [disabled]="!signForm.valid">Sign Up</button>
         <p>{{ signForm.value | json }}</p>
       </form>

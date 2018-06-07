@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../core/auth.service';
+import {pipe} from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -10,8 +12,8 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 export class LoginComponent implements OnInit{
   loginForm: FormGroup;
   signForm: FormGroup;
-  statusLogin: boolean = false;
-  constructor() { }
+  statusLogin = false;
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -32,7 +34,10 @@ export class LoginComponent implements OnInit{
       ]),
       password: new FormControl('', [
         Validators.required,
-        Validators.minLength(4)])
+        Validators.minLength(8)]),
+      confirm_password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8)])
     });
   }
 
@@ -45,12 +50,16 @@ export class LoginComponent implements OnInit{
   }
 
   onSubmitLogin() {
-    console.log(this.loginForm);
-    this.loginForm.reset();
+    // console.log(this.loginForm);
+    this.authService.logined(this.loginForm.value).subscribe(data => console.log(data),
+      error => console.log(error));
+    // this.loginForm.reset();
   }
 
   onSubmitSign() {
-    console.log(this.signForm);
-    this.signForm.reset();
+    // console.log(this.signForm);
+    this.authService.register(this.signForm.value).subscribe(data => console.log(data),
+      error => console.log(error));
+    // this.signForm.reset();
   }
 }
