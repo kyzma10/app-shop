@@ -46,9 +46,11 @@ export class LoginComponent implements OnInit{
 
   onSubmitLogin() {
     console.log(this.loginForm);
+    this.loginForm.reset();
   }
 
   onSubmitSign() {
     console.log(this.signForm);
+    this.signForm.reset();
   }
 }

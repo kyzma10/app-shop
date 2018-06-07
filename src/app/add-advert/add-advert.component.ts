@@ -7,8 +7,6 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./add-advert.component.scss']
 })
 export class AddAdvertComponent implements OnInit {
-  // model = {};
-  // text = new FormControl();
   addAdvertForm: FormGroup;
   constructor() { }
 
@@ -26,6 +24,7 @@ export class AddAdvertComponent implements OnInit {
 
   onSubmit() {
     console.log(this.addAdvertForm);
+    this.addAdvertForm.reset();
   }
 
   checkValueValidator(control: FormControl): {error: string} {
