@@ -11,8 +11,8 @@ export class ScrollInf {
   @Output() scrollTo = new EventEmitter();
 
   @HostListener('window:scroll') onScroll() {
-    this.scrollTo.emit();
-    if (this.elem.nativeElement.scrollTop + this.elem.nativeElement.clientHeight > this.elem.nativeElement.scrollHeight) {
+
+    if ( this.elem.nativeElement.clientHeight <= window.pageYOffset + 700) {
       this.scrollTo.emit();
       // console.log('download');
     }

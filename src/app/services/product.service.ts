@@ -6,7 +6,7 @@ import {ResponseModel} from "../models/response.model";
 
 @Injectable()
 export class ProductService {
-  private limit: number = 4;
+  private limit: number = 16;
   constructor(private http: HttpClient) {}
 
   public getProducts() {

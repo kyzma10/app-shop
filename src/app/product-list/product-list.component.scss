@@ -7,7 +7,7 @@
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 2rem;
   padding: 0 5rem;
-  height: 105vh;
+  //height: 105vh;
 
   @include xl {
     -ms-grid-template-columns: repeat(3, 1fr);
