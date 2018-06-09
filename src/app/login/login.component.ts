@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../core/auth.service';
-import {pipe} from 'rxjs';
+import {tap} from 'rxjs/internal/operators';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit{
   loginForm: FormGroup;
   signForm: FormGroup;
   statusLogin = false;
+  errors: any;
+
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
@@ -51,15 +53,19 @@ export class LoginComponent implements OnInit{
 
   onSubmitLogin() {
     // console.log(this.loginForm);
-    this.authService.logined(this.loginForm.value).subscribe(data => console.log(data),
-      error => console.log(error));
-    // this.loginForm.reset();
+    this.errors = {};
+    this.authService.logined(this.loginForm.value).pipe(
+      tap((data: any) => localStorage.setItem('token', data.token))
+    ).subscribe((data: any) => console.log(data),
+      (errors: any) => this.errors = errors.error);
+    this.loginForm.reset();
   }
 
   onSubmitSign() {
     // console.log(this.signForm);
+    this.errors = {};
     this.authService.register(this.signForm.value).subscribe(data => console.log(data),
-      error => console.log(error));
-    // this.signForm.reset();
+      (errors: any) => {this.errors = errors.error; console.log(this.errors)});
+    this.signForm.reset();
   }
 }

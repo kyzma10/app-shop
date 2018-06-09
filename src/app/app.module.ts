@@ -25,6 +25,8 @@ import { AddAdvertComponent } from './add-advert/add-advert.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthService} from './core/auth.service';
 import {AuthInterceptor} from './core/auth.interceptor';
+import { ProductListItemComponent } from './product-list/product-list-item/product-list-item.component';
+import {AdvertResolver} from "./services/advert.resolver";
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import {AuthInterceptor} from './core/auth.interceptor';
     ScrollInf,
     NotFoundComponent,
     FooterComponent,
-    AddAdvertComponent
+    AddAdvertComponent,
+    ProductListItemComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +57,7 @@ import {AuthInterceptor} from './core/auth.interceptor';
     ProductService,
     ProductResolver,
     AuthService,
+    AdvertResolver,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

@@ -15,10 +15,10 @@ export class HomeComponent {
     {path: '../../assets/img/item-3.png', status: false}
   ];
 
-  handleClick() {
+  handleClick(): void {
     let currentItem = (this.currentSlide + 1) % this.slides.length;
     for(let i = 0; i < this.slides.length; i++) {
-      if (i === currentItem) {
+      if(i === currentItem) {
         this.slides[i].status = true;
       } else this.slides[i].status = false;
     }

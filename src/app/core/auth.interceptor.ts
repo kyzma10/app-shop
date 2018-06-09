@@ -7,10 +7,10 @@ export class AuthInterceptor implements HttpInterceptor{
   constructor() {}
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // const authHeader = `Token ${SessionService.token}`;
-    const authHeader = 'lohgweruohguiowerhioghwhghhgdfrhkig';
-    if (authHeader) {
-      const authReq = req.clone({headers: req.headers.set('Autorization', authHeader)});
+    const authHeader = 'lokjkh_34ihgr43hof3ohjohf@@##@%gkjbkjzbwe';
+    if (authHeader !== null) {
+      const authReq = req.clone({headers: req.headers.set('Authorization', authHeader)});
       return next.handle(authReq);
-    } else { return next.handle(req); }
+    } else return next.handle(req);
   }
 }
