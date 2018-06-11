@@ -31,7 +31,7 @@ export class ProductListItemComponent implements OnInit {
           this.slides.push({path: this.advert.images[i].file, status: true })
         } else this.slides.push({path: this.advert.images[i].file, status: false});
       }
-    }
+    } else this.slides.push({path: '../../../assets/img/no_image.png', status: true })
   }
 
   handleClick(): void {

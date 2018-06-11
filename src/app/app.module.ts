@@ -27,6 +27,7 @@ import {AuthService} from './core/auth.service';
 import {AuthInterceptor} from './core/auth.interceptor';
 import { ProductListItemComponent } from './product-list/product-list-item/product-list-item.component';
 import {AdvertResolver} from "./services/advert.resolver";
+import {CookieService} from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import {AdvertResolver} from "./services/advert.resolver";
     ProductResolver,
     AuthService,
     AdvertResolver,
+    CookieService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

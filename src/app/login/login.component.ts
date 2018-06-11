@@ -1,7 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../core/auth.service';
 import {tap} from 'rxjs/internal/operators';
+import {CookieService} from 'ngx-cookie-service';
+import {User} from '../models/user.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +18,7 @@ export class LoginComponent implements OnInit{
   statusLogin = false;
   errors: any;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private cookie: CookieService, private route: Router) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -25,7 +28,7 @@ export class LoginComponent implements OnInit{
       ]),
       password: new FormControl('', [
         Validators.required,
-        Validators.minLength(4)
+        Validators.minLength(8)
       ])
     });
 
@@ -41,6 +44,7 @@ export class LoginComponent implements OnInit{
         Validators.required,
         Validators.minLength(8)])
     });
+
   }
 
   changeStatusLogin(): void {
@@ -55,17 +59,20 @@ export class LoginComponent implements OnInit{
     // console.log(this.loginForm);
     this.errors = {};
     this.authService.logined(this.loginForm.value).pipe(
-      tap((data: any) => localStorage.setItem('token', data.token))
-    ).subscribe((data: any) => console.log(data),
+      tap((data: any) => {this.cookie.set('token', data.token)})
+    ).subscribe((data: any) => {console.log(data)},
       (errors: any) => this.errors = errors.error);
     this.loginForm.reset();
+    // if(this.cookie.get('token')) {
+    //   this.route.navigate(['/advert']);
+    // }
   }
 
   onSubmitSign() {
     // console.log(this.signForm);
     this.errors = {};
     this.authService.register(this.signForm.value).subscribe(data => console.log(data),
-      (errors: any) => {this.errors = errors.error; console.log(this.errors)});
+      (errors: any) => this.errors = errors.error);
     this.signForm.reset();
   }
 }
