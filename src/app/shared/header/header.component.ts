@@ -1,5 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {CookieService} from 'ngx-cookie-service';
+import {ApiUsersService} from '../../core/api-users.service';
 
 @Component({
   selector: 'app-header',
@@ -7,14 +8,15 @@ import {CookieService} from 'ngx-cookie-service';
   styleUrls: ['./header.component.scss']
 })
 
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
-  @Input() user;
-  constructor(private cookie: CookieService) {
-    console.log(this.user)
+  constructor(private profile: ApiUsersService) {}
+
+  ngOnInit() {
+    // this.profile.userSubject();
   }
 
   logOut() {
-    this.cookie.delete('token');
+    // this.cookie.delete('token');
   }
 }

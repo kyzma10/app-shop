@@ -26,8 +26,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthService} from './core/auth.service';
 import {AuthInterceptor} from './core/auth.interceptor';
 import { ProductListItemComponent } from './product-list/product-list-item/product-list-item.component';
-import {AdvertResolver} from "./services/advert.resolver";
+import {AdvertResolver} from './services/advert.resolver';
 import {CookieService} from 'ngx-cookie-service';
+import {SessionService} from './core/session.service';
+import {ApiUsersService} from './core/api-users.service';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,8 @@ import {CookieService} from 'ngx-cookie-service';
     AuthService,
     AdvertResolver,
     CookieService,
+    SessionService,
+    ApiUsersService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

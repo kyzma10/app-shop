@@ -23,4 +23,11 @@ export class AuthService {
     };
     return this.http.post('http://light-it-04.tk/api/login/', body);
   }
+
+  verifyEmail(key: any) {
+    if (key === null) {
+      return false;
+    }
+    return this.http.post('http://light-it-04.tk/api/verify-email/', {key: key});
+  }
 }

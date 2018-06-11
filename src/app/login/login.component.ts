@@ -5,6 +5,7 @@ import {tap} from 'rxjs/internal/operators';
 import {CookieService} from 'ngx-cookie-service';
 import {User} from '../models/user.model';
 import {Router} from '@angular/router';
+import {SessionService} from '../core/session.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,10 @@ export class LoginComponent implements OnInit{
   statusLogin = false;
   errors: any;
 
-  constructor(private authService: AuthService, private cookie: CookieService, private route: Router) { }
+  constructor(private authService: AuthService,
+              private cookie: CookieService,
+              private route: Router,
+              private session: SessionService) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -56,11 +60,10 @@ export class LoginComponent implements OnInit{
   }
 
   onSubmitLogin() {
-    // console.log(this.loginForm);
     this.errors = {};
     this.authService.logined(this.loginForm.value).pipe(
-      tap((data: any) => {this.cookie.set('token', data.token)})
-    ).subscribe((data: any) => {console.log(data)},
+      tap((data: any) => {this.session.token(data.token); console.log(data.token); })
+    ).subscribe((data: any) => console.log(data),
       (errors: any) => this.errors = errors.error);
     this.loginForm.reset();
     // if(this.cookie.get('token')) {
@@ -71,7 +74,8 @@ export class LoginComponent implements OnInit{
   onSubmitSign() {
     // console.log(this.signForm);
     this.errors = {};
-    this.authService.register(this.signForm.value).subscribe(data => console.log(data),
+    this.authService.register(this.signForm.value).
+    subscribe((data: any) => this.authService.verifyEmail(data.token),
       (errors: any) => this.errors = errors.error);
     this.signForm.reset();
   }
