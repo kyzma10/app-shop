@@ -1,0 +1,28 @@
+<section class="login">
+    <div class="login__left"></div>
+
+    <div class="login__sidebar">
+      <div class="login__sidebar__logo">
+        <img src="/assets/login-page/logo.png" alt="logo">
+      </div>
+      <div class="login__sidebar__form login__sidebar__sign">
+        <button type="button"
+                class="login__sidebar__sign__in"
+                [disabled]="statusLogin"
+                (click)="changeStatusLogin()"
+                [class.active]="statusLogin"
+        >Sign In
+        </button>
+        <button type="button"
+                class="login__sidebar__sign__up"
+                [disabled]="!statusLogin"
+                (click)="changeStatusSign()"
+                [class.active]="!statusLogin"
+        >Sign Up
+        </button>
+      </div>
+      <app-login *ngIf="statusLogin" class="login__sidebar__form"></app-login>
+      <app-register *ngIf="!statusLogin" class="login__sidebar__form"></app-register>
+      <app-footer class="login__footer"></app-footer>
+    </div>
+  </section>

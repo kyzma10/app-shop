@@ -6,19 +6,19 @@ import {CookieService} from 'ngx-cookie-service';
 export class SessionService {
 
   constructor(private cookie: CookieService) {}
+
   get token() {
     return this.cookie.get('token');
   }
   set token(value: any) {
-    console.log('session-service', value);
-    // this.cookie.set('token', value);
+    this.cookie.set('token', value);
   }
 
   get user() {
-    return JSON.stringify(localStorage.getItem('user'));
+    return JSON.parse(localStorage.getItem('user'));
   }
 
-  set user(value: string) {
-    localStorage.setItem('user', value);
+  set user(value: any) {
+    localStorage.setItem('user', JSON.stringify(value));
   }
 }

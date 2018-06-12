@@ -1,0 +1,24 @@
+<form novalidate
+      [formGroup]="loginForm"
+      (ngSubmit)="onSubmitLogin()">
+  <div class="login__sidebar__input">
+    <label for="email" ></label>
+    <input type="text" name="email" placeholder="  Email" formControlName="email">
+    <div *ngIf="errors?.email" class="errors">
+      <ul *ngFor="let error of errors?.email">
+        <li>{{error}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="login__sidebar__input">
+    <label for="password" ></label>
+    <input type="password" name="password" placeholder="  Password" formControlName="password">
+    <div *ngIf="errors?.non_field_errors" class="errors">
+      <ul *ngFor="let error of errors?.non_field_errors">
+        <li>{{error}}</li>
+      </ul>
+    </div>
+  </div>
+  <button type="submit" class="login__sidebar__login" [disabled]="!loginForm.valid">Login</button>
+  <p>{{ loginForm.value | json }}</p>
+</form>

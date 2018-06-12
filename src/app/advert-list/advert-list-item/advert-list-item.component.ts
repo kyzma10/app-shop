@@ -6,8 +6,8 @@ import {Observable} from 'rxjs/index';
 
 @Component({
   selector: 'app-product-list-item',
-  templateUrl: './product-list-item.component.html',
-  styleUrls: ['./product-list-item.component.scss']
+  templateUrl: './advert-list-item.component.html',
+  styleUrls: ['./advert-list-item.component.scss']
 })
 export class ProductListItemComponent implements OnInit {
   currentSlide: number = 0;

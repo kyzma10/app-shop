@@ -1,0 +1,48 @@
+@import "../../../styles/const";
+
+button {
+  font-size: 1.4rem;
+  width: 100%;
+  display: inline-block;
+  background-color: $color-button;
+  color: $color-text-button;
+  text-align: center;
+  padding: 1rem 0;
+  border: none;
+  outline: none;
+  margin-top: 1.5rem;
+}
+
+input {
+  background: none;
+  border: none;
+  outline: none;
+  margin-top: 1.5rem;
+  padding: .5rem 0;
+  border-bottom: 4px solid $color-button;
+  color: $color-white;
+  width: 100%;
+}
+
+input::-webkit-input-placeholder {
+  color: $color-white;
+}
+
+input::-moz-placeholder {
+  color: $color-white;
+}
+
+input::placeholder {
+  color: $color-white;
+}
+
+input.ng-invalid.ng-touched {
+  border-bottom: 4px solid red;
+  //border: 3px solid red;
+}
+
+.errors {
+  margin-top: 1rem;
+  font-size: 1.4rem;
+  color: darkred;
+}

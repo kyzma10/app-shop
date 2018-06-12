@@ -1,6 +1,6 @@
 <header class="header">
     <div class="header__logo">
-      <img src="../../../assets/img/logo.png" alt="logo">
+      <img src="/assets/img/logo.png" alt="logo">
     </div>
     <div class="header__search">
       <i class="fa fa-search"></i>
@@ -8,14 +8,14 @@
     </div>
     <div class="header__user-block">
       <div class="header__user-block__login">
-        <img src="../../../assets/img/ava_1.png" alt="ava 1" class="img__circle">
-        <p>Kim Evans</p>
+        <img src="/assets/img/ava_1.png" alt="ava 1" class="img__circle">
+        <p>{{user?.username}}</p>
         <i class="fa fa-sign-out fa-2x" (click)="logOut()"></i>
       </div>
       <div class="header__user-block__nav">
         <div class="header__user-block__nav-left"><a [routerLink]="['/add-advert']">Add new post</a></div>
         <span class="header__user-block__center"></span>
-        <div class="header__user-block__nav-right"><a href="#">Profile</a></div>
+        <div class="header__user-block__nav-right"><a [routerLink]="['/profile']">Profile</a></div>
       </div>
     </div>
   </header>

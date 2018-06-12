@@ -1,0 +1,40 @@
+<section class="profile">
+  <form (ngSubmit)="handleSubmit()" [formGroup]="profileForm" novalidate enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="username">Username: </label>
+      <input type="text" name="username" class="form-control" formControlName="username">
+    </div>
+    <div class="form-group" >
+      <div class="avatar">Avatar:</div>
+      <label for="avatar"><span class="btn">Choice avatar</span></label>
+      <input type="file" name="avatar" id="avatar" class="form-control" formControlName="avatar" multiple>
+    </div>
+    <div class="form-group">
+      <label for="color_scheme">Color scheme: </label>
+      <input type="text" name="color_scheme" class="form-control" formControlName="color_scheme">
+    </div>
+    <div class="form-group">
+      <label for="email">Email: </label>
+      <input type="email" name="email" class="form-control" formControlName="email">
+    </div>
+    <div class="form-group">
+      <label for="first_name">First name: </label>
+      <input type="text" name="first_name" class="form-control" formControlName="first_name">
+    </div>
+    <div class="form-group">
+      <label for="last_name">Last name: </label>
+      <input type="text" name="last_name" class="form-control" formControlName="last_name">
+    </div>
+    <div class="form-group">
+      <label for="language">Language: </label>
+      <input type="text" name="language" class="form-control" formControlName="language">
+    </div>
+    <div class="form-group">
+      <label for="location">Location: </label>
+      <input type="text" name="location" class="form-control" formControlName="location">
+    </div>
+    <button class="btn" [disabled]="!profileForm.valid">Change profile</button>
+    <p>{{ profileForm.value | json }}</p>
+    <p *ngIf="profileForm.invalid && profileForm.controls['theme'].touched">No correct</p>
+  </form>
+</section>

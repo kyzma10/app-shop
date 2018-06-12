@@ -1,0 +1,10 @@
+@import "../../../styles/const";
+
+.block-not-found {
+  padding-top: 5rem;
+  background-color: $color-primery;
+
+  img {
+    width: 100%;
+  }
+}

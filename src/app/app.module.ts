@@ -2,13 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { RegesterComponent } from './regester/regester.component';
+import { AuthComponent } from './auth/auth.component';
 import { HeaderComponent } from './shared/header/header.component';
-import { TestPageComponent } from './test-page/test-page.component';
-import { ListPageComponent } from './list-page/list-page.component';
-import { ProductListComponent } from './product-list/product-list.component';
+import { ProductListComponent } from './advert-list/advert-list.component';
 
 import { ScrollTop } from './shared/directives/scrollTop.directive';
 import { ScrollInf } from './shared/directives/scrollInf.directive';
@@ -18,35 +14,37 @@ import { ProductService } from './services/product.service';
 
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import {ProductResolver} from './services/product-resolver';
-import { AddAdvertComponent } from './add-advert/add-advert.component';
+import { AddAdvertComponent } from './advert-list/add-advert/add-advert.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthService} from './core/auth.service';
 import {AuthInterceptor} from './core/auth.interceptor';
-import { ProductListItemComponent } from './product-list/product-list-item/product-list-item.component';
+import { ProductListItemComponent } from './advert-list/advert-list-item/advert-list-item.component';
 import {AdvertResolver} from './services/advert.resolver';
 import {CookieService} from 'ngx-cookie-service';
 import {SessionService} from './core/session.service';
 import {ApiUsersService} from './core/api-users.service';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { ProfileComponent } from './auth/profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    LoginComponent,
-    RegesterComponent,
+    AuthComponent,
     HeaderComponent,
-    TestPageComponent,
-    ListPageComponent,
     ProductListComponent,
     ScrollTop,
     ScrollInf,
     NotFoundComponent,
     FooterComponent,
     AddAdvertComponent,
-    ProductListItemComponent
+    ProductListItemComponent,
+    LoginComponent,
+    RegisterComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
