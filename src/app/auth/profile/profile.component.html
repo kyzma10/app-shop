@@ -1,3 +1,4 @@
+<app-header></app-header>
 <section class="profile">
   <form (ngSubmit)="handleSubmit()" [formGroup]="profileForm" novalidate enctype="multipart/form-data">
     <div class="form-group">
@@ -35,6 +36,5 @@
     </div>
     <button class="btn" [disabled]="!profileForm.valid">Change profile</button>
     <p>{{ profileForm.value | json }}</p>
-    <p *ngIf="profileForm.invalid && profileForm.controls['theme'].touched">No correct</p>
   </form>
 </section>

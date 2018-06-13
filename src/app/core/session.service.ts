@@ -21,4 +21,8 @@ export class SessionService {
   set user(value: any) {
     localStorage.setItem('user', JSON.stringify(value));
   }
+
+  deleteToken() {
+    this.cookie.delete('token');
+  }
 }

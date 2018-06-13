@@ -29,6 +29,9 @@ import {ApiUsersService} from './core/api-users.service';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ProfileComponent } from './auth/profile/profile.component';
+import {UserService} from './core/user.service';
+import {AuthGuard} from './core/auth.guard';
+import {LoginGuard} from './core/login.guard';
 
 @NgModule({
   declarations: [
@@ -62,6 +65,9 @@ import { ProfileComponent } from './auth/profile/profile.component';
     CookieService,
     SessionService,
     ApiUsersService,
+    UserService,
+    AuthGuard,
+    LoginGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

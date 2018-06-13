@@ -21,7 +21,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
 
   public loadMore() {
-    this.productService.getProducts().subscribe((res: ProductModel[]) => {
+    this.productService.getProductsMore().subscribe((res: ProductModel[]) => {
       res.forEach(item => this.products.push(item));
     });
   }

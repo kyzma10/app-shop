@@ -8,14 +8,16 @@ import {AddAdvertComponent} from './advert-list/add-advert/add-advert.component'
 import {ProductListItemComponent} from './advert-list/advert-list-item/advert-list-item.component';
 import {AdvertResolver} from "./services/advert.resolver";
 import {ProfileComponent} from './auth/profile/profile.component';
+import {AuthGuard} from './core/auth.guard';
+import {LoginGuard} from './core/login.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: 'advert', pathMatch: 'full'},
-  {path: 'advert', component: ProductListComponent},
-  {path: 'advert/:id', component: ProductListItemComponent, resolve: {advert: AdvertResolver}},
-  {path: 'login', component: AuthComponent},
-  {path: 'add-advert', component: AddAdvertComponent},
-  {path: 'profile', component: ProfileComponent},
+  {path: 'advert', canActivate: [AuthGuard], component: ProductListComponent},
+  {path: 'advert/:id', canActivate: [AuthGuard], component: ProductListItemComponent, resolve: {advert: AdvertResolver}},
+  {path: 'auth', canActivate: [LoginGuard], component: AuthComponent},
+  {path: 'add-advert', canActivate: [AuthGuard], component: AddAdvertComponent},
+  {path: 'profile', canActivate: [AuthGuard], component: ProfileComponent},
   {path: '**', component: NotFoundComponent}
 ];
 @NgModule({

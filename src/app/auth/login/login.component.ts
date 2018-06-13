@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {tap} from 'rxjs/internal/operators';
 import {AuthService} from '../../core/auth.service';
 import {SessionService} from '../../core/session.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   errors: any;
 
-  constructor(private authService: AuthService, private session: SessionService) { }
+  constructor(private authService: AuthService, private session: SessionService, private route: Router) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -33,7 +34,10 @@ export class LoginComponent implements OnInit {
     this.authService.logined(this.loginForm.value)
       .pipe(
       tap((data: any) => this.session.token = data.token)
-    ).subscribe((data: any) => this.session.user = data.user,
+    ).subscribe((data: any) => {
+      this.session.user = data.user;
+      this.route.navigate(['']);
+      },
       (errors: any) => this.errors = errors.error);
     this.loginForm.reset();
     // if(this.cookie.get('token')) {

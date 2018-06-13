@@ -12,7 +12,7 @@ export class ScrollInf {
 
   @HostListener('window:scroll') onScroll() {
 
-    if ( this.elem.nativeElement.clientHeight <= window.pageYOffset + 700) {
+    if ( this.elem.nativeElement.clientHeight <= window.pageYOffset + 750 ) {
       this.scrollTo.emit();
       // console.log('download');
     }

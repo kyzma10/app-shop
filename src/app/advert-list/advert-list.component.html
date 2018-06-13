@@ -1,12 +1,13 @@
 <app-header></app-header>
+<div *ngIf="!products?.length > 0" class="loader"><img src="/assets/img/ajax-loader.gif" alt=""></div>
 <section class="products" scroll-inf (scrollTo)="loadMore()">
   <div class="product" *ngFor="let product of products">
     <img
-      src="{{product.images.length > 0 ? product.images[0].file : '../../assets/img/no_image.png'}}"
-      alt="{{product.theme}}"
+      src="{{product?.images.length > 0 ? product?.images[0].file : '../../assets/img/no_image.png'}}"
+      alt="{{product?.theme}}"
       class="product__img">
     <div class="product__info">
-      <h5>{{ product.theme }}</h5>
+      <h5>{{ product?.theme }}</h5>
       <i class="fa fa-eye" [routerLink]="[product?.pk]"></i>
     </div>
   </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
+import {UserService} from '../../core/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,7 +9,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class ProfileComponent implements OnInit {
   profileForm: FormGroup;
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.profileForm = new FormGroup({
@@ -23,12 +24,9 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  uploadImg(e) {
-    console.log(e);
-  }
-
   handleSubmit() {
     console.log(this.profileForm.value);
+    this.userService.changeUserData(this.profileForm.value).subscribe();
   }
 
 }

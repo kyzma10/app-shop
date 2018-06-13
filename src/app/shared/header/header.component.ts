@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CookieService} from 'ngx-cookie-service';
 import {ApiUsersService} from '../../core/api-users.service';
 import {User} from '../../models/user.model';
 import {SessionService} from '../../core/session.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -13,14 +13,14 @@ import {SessionService} from '../../core/session.service';
 export class HeaderComponent implements OnInit {
   user: User;
 
-  constructor(private profile: ApiUsersService, private session: SessionService) {}
+  constructor(private profile: ApiUsersService, private session: SessionService, private route: Router) {}
 
   ngOnInit() {
     this.user = this.session.user;
-    console.log(this.user);
   }
 
   logOut() {
-    // this.cookie.delete('token');
+    this.session.deleteToken();
+    this.route.navigate(['auth']);
   }
 }

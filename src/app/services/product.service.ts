@@ -7,6 +7,7 @@ import {ResponseModel} from "../models/response.model";
 @Injectable()
 export class ProductService {
   private limit: number = 16;
+  private limitMore: number = 4;
 
   constructor(private http: HttpClient) {}
 
@@ -24,5 +25,15 @@ export class ProductService {
     return this.http.get(`http://light-it-04.tk/api/adverts/${id}`).pipe(
       tap((response: any) => console.log(response))
     );
+  }
+
+  public getProductsMore() {
+    return this.http.get(`http://light-it-04.tk/api/adverts?limit=${this.limitMore}`)
+      .pipe(
+        map((response: ResponseModel) => {
+          const result: ProductModel[] = [];
+          response.results.forEach(item => result.push(item));
+          return result;
+        }));
   }
 }
