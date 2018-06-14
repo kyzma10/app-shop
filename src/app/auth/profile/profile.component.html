@@ -37,4 +37,5 @@
     <button class="btn" [disabled]="!profileForm.valid">Change profile</button>
     <p>{{ profileForm.value | json }}</p>
   </form>
+  <input type="file" (change)="handleChange($event)">
 </section>

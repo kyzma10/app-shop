@@ -26,6 +26,13 @@ export class AuthService {
     return this.http.post('http://light-it-04.tk/api/login/', body);
   }
 
+  loginGoogle(token) {
+    const body = {
+      access_token: token
+    };
+    return this.http.post('http://light-it-04.tk/api/rest-auth/google/', body);
+  }
+
   isLoged(): boolean {
     if (this.session.token) {
       return true;

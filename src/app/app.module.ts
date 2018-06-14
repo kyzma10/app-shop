@@ -32,6 +32,29 @@ import { ProfileComponent } from './auth/profile/profile.component';
 import {UserService} from './core/user.service';
 import {AuthGuard} from './core/auth.guard';
 import {LoginGuard} from './core/login.guard';
+import {
+  SocialLoginModule,
+  AuthServiceConfig,
+  GoogleLoginProvider,
+  FacebookLoginProvider,
+} from 'angular5-social-login';
+import { SigninComponent } from './signin/signin.component';
+
+export function getAuthServiceConfigs() {
+  let config = new AuthServiceConfig(
+    [
+      {
+        id: FacebookLoginProvider.PROVIDER_ID,
+        provider: new FacebookLoginProvider('')
+      },
+      {
+        id: GoogleLoginProvider.PROVIDER_ID,
+        provider: new GoogleLoginProvider('837694048230-keo53o03s8od9ee39boib7o6prp18fs5')
+      },
+    ]
+);
+  return config;
+}
 
 @NgModule({
   declarations: [
@@ -47,14 +70,16 @@ import {LoginGuard} from './core/login.guard';
     ProductListItemComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SocialLoginModule
   ],
   providers: [
     DataService,
@@ -72,6 +97,10 @@ import {LoginGuard} from './core/login.guard';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
+    },
+    {
+      provide: AuthServiceConfig,
+      useFactory: getAuthServiceConfigs
     }
   ],
   bootstrap: [AppComponent]

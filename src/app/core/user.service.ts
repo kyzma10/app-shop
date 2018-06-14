@@ -8,7 +8,7 @@ export class UserService implements OnInit {
   ngOnInit() {
   }
 
-  changeUserData(user: User) {
-    return this.http.patch('http://light-it-04.tk/api/profile/', user);
+  changeUserData(data: any) {
+    return this.http.patch('http://light-it-04.tk/api/profile/', data);
   }
 }

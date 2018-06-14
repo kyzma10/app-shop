@@ -29,4 +29,17 @@ export class ProfileComponent implements OnInit {
     this.userService.changeUserData(this.profileForm.value).subscribe();
   }
 
+  handleChange(e) {
+    e.preventDefault();
+    console.log(e.target.files);
+    for (let i = 0; i < e.target.files.length; i++) {
+      let reader = new FileReader();
+      reader.readAsDataURL(e.target.files[i]);
+      reader.onloadend = () => {
+        console.log(reader.result);
+        this.userService.changeUserData({avatar: reader}).subscribe();
+      };
+    }
+  }
+
 }

@@ -10,6 +10,7 @@ import {AdvertResolver} from "./services/advert.resolver";
 import {ProfileComponent} from './auth/profile/profile.component';
 import {AuthGuard} from './core/auth.guard';
 import {LoginGuard} from './core/login.guard';
+import {SigninComponent} from './signin/signin.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'advert', pathMatch: 'full'},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'auth', canActivate: [LoginGuard], component: AuthComponent},
   {path: 'add-advert', canActivate: [AuthGuard], component: AddAdvertComponent},
   {path: 'profile', canActivate: [AuthGuard], component: ProfileComponent},
+  {path: 'signin', component: SigninComponent},
   {path: '**', component: NotFoundComponent}
 ];
 @NgModule({
