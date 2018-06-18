@@ -1,5 +1,7 @@
 <app-header></app-header>
-<div *ngIf="!products?.length > 0" class="loader"><img src="/assets/img/ajax-loader.gif" alt=""></div>
+<div *ngIf="!products?.length > 0" class="loader">
+  <img src="/assets/img/ajax-loader.gif" alt="load">
+</div>
 <section class="products" scroll-inf (scrollTo)="loadMore()">
   <div class="product" *ngFor="let product of products">
     <img

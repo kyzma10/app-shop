@@ -9,7 +9,6 @@ import { ProductListComponent } from './advert-list/advert-list.component';
 import { ScrollTop } from './shared/directives/scrollTop.directive';
 import { ScrollInf } from './shared/directives/scrollInf.directive';
 
-import { DataService } from './services/data.service';
 import { ProductService } from './services/product.service';
 
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
@@ -82,7 +81,6 @@ export function getAuthServiceConfigs() {
     SocialLoginModule
   ],
   providers: [
-    DataService,
     ProductService,
     ProductResolver,
     AuthService,

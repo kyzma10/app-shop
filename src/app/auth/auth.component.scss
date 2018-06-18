@@ -69,6 +69,15 @@ button {
       color: $color-white;
     }
 
+    &__non-authorized {
+      font-size: 1.8rem;
+      margin: 1.5rem 0 2.5rem 4rem;
+
+      span {
+        color: $color-grey;
+      }
+    }
+
     &__logo {
       text-align: center;
       margin-top: 1.5rem;

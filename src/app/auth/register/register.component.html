@@ -2,8 +2,17 @@
       [formGroup]="signForm"
       (ngSubmit)="onSubmitSign()">
   <div class="login__sidebar__input">
+    <label for="username" ></label>
+    <input type="text" name="username" placeholder="  Username" formControlName="username">
+    <div *ngIf="errors?.email" class="errors">
+      <ul *ngFor="let error of errors?.username">
+        <li>{{error}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="login__sidebar__input">
     <label for="email" ></label>
-    <input type="text" name="email" placeholder="  Email" formControlName="email">
+    <input type="email" name="email" placeholder="  Email" formControlName="email">
     <div *ngIf="errors?.email" class="errors">
       <ul *ngFor="let error of errors?.email">
         <li>{{error}}</li>

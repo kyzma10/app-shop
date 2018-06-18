@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {SignModel} from '../models/sign.model';
 import {LoginModel} from '../models/login.model';
 import {SessionService} from './session.service';
+import {Urls} from './urls';
 
 @Injectable()
 export class AuthService {
@@ -15,7 +16,7 @@ export class AuthService {
       password1: sign.password,
       password2: sign.confirm_password
     };
-    return this.http.post('http://light-it-04.tk/api/registration/', body);
+    return this.http.post(Urls.regester, body);
   }
 
   logined(login: LoginModel) {
@@ -23,14 +24,14 @@ export class AuthService {
       email: login.email,
       password: login.password
     };
-    return this.http.post('http://light-it-04.tk/api/login/', body);
+    return this.http.post(Urls.login, body);
   }
 
   loginGoogle(token) {
     const body = {
       access_token: token
     };
-    return this.http.post('http://light-it-04.tk/api/rest-auth/google/', body);
+    return this.http.post(Urls.loginToGoogle, body);
   }
 
   isLoged(): boolean {
@@ -45,6 +46,6 @@ export class AuthService {
     if (key === null) {
       return false;
     }
-    return this.http.post('http://light-it-04.tk/api/verify-email/', {key: key});
+    return this.http.post(Urls.verifyEmail, {key: key});
   }
 }

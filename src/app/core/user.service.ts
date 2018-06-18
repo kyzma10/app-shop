@@ -1,6 +1,7 @@
 import {Injectable, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {User} from '../models/user.model';
+import {Urls} from './urls';
 
 @Injectable()
 export class UserService implements OnInit {
@@ -9,6 +10,6 @@ export class UserService implements OnInit {
   }
 
   changeUserData(data: any) {
-    return this.http.patch('http://light-it-04.tk/api/profile/', data);
+    return this.http.patch(Urls.editProfile, data);
   }
 }
