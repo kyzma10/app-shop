@@ -3,7 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../core/auth.service';
 import {tap} from 'rxjs/internal/operators';
 import {CookieService} from 'ngx-cookie-service';
-import {User} from '../models/user.model';
+import {User} from '../core/models/user.model';
 import {Router} from '@angular/router';
 import {SessionService} from '../core/session.service';
 

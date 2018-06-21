@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import {map, tap} from 'rxjs/internal/operators';
 import { ProductModel } from "../models/product.model";
 import {ResponseModel} from "../models/response.model";
-import {Urls} from '../core/urls';
+import {Urls} from '../urls';
 import {Observable} from 'rxjs/Rx';
 
 @Injectable()
@@ -38,5 +38,13 @@ export class ProductService {
           response.results.forEach(item => result.push(item));
           return result;
         }));
+  }
+
+  public addAdvert(res: any) {
+    const body: any = {
+      theme: 'new',
+      currency: '1'
+    };
+    return this.http.post(Urls.advert, body);
   }
 }

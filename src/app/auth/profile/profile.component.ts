@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {UserService} from '../../core/user.service';
+import {SessionService} from '../../core/session.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,7 +10,7 @@ import {UserService} from '../../core/user.service';
 })
 export class ProfileComponent implements OnInit {
   profileForm: FormGroup;
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private session: SessionService) { }
 
   ngOnInit() {
     this.profileForm = new FormGroup({
@@ -25,7 +26,17 @@ export class ProfileComponent implements OnInit {
   }
 
   handleSubmit() {
-    this.userService.changeUserData(this.profileForm.value).subscribe();
+    let res: any = {};
+    const val: any = this.profileForm.value;
+    for (let item in val) {
+      if (val[item] !== null) {
+        res[item] = val[item];
+      }
+    }
+
+    this.userService.changeUserData(res).subscribe(
+      response => console.log(response),
+      error => console.log(error));
   }
 
   handleChange(e) {

@@ -1,7 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {SignModel} from '../models/sign.model';
-import {LoginModel} from '../models/login.model';
+import {SignModel} from './models/sign.model';
+import {LoginModel} from './models/login.model';
 import {SessionService} from './session.service';
 import {Urls} from './urls';
 

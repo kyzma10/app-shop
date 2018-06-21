@@ -9,19 +9,19 @@ import { ProductListComponent } from './advert-list/advert-list.component';
 import { ScrollTop } from './shared/directives/scrollTop.directive';
 import { ScrollInf } from './shared/directives/scrollInf.directive';
 
-import { ProductService } from './services/product.service';
+import { ProductService } from './core/services/product.service';
 
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import {ProductResolver} from './services/product-resolver';
+import {ProductResolver} from './core/services/product-resolver';
 import { AddAdvertComponent } from './advert-list/add-advert/add-advert.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthService} from './core/auth.service';
 import {AuthInterceptor} from './core/auth.interceptor';
 import { ProductListItemComponent } from './advert-list/advert-list-item/advert-list-item.component';
-import {AdvertResolver} from './services/advert.resolver';
+import {AdvertResolver} from './core/services/advert.resolver';
 import {CookieService} from 'ngx-cookie-service';
 import {SessionService} from './core/session.service';
 import {ApiUsersService} from './core/api-users.service';
