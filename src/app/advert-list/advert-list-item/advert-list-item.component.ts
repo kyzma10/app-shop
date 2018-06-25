@@ -15,7 +15,7 @@ export class ProductListItemComponent implements OnInit {
 
   slides: Array<any> = [];
 
-  constructor(activate: ActivatedRoute) {
+  constructor(activate: ActivatedRoute, private product: ProductService) {
     this.advert = activate.data.pipe((data: any) => data.value.advert);
   }
 
@@ -37,6 +37,19 @@ export class ProductListItemComponent implements OnInit {
       } else this.slides[i].status = false;
     }
     this.currentSlide++;
+  }
+
+  handleChange(e) {
+    e.preventDefault();
+    for (let i = 0; i < e.target.files.length; i++) {
+      let reader = new FileReader();
+      reader.readAsDataURL(e.target.files[i]);
+      reader.onloadend = () => {
+        // console.log(reader.result);
+        this.product.addImage(this.advert.pk, reader.result).subscribe(response => console.log(response))
+        // this.userService.changeUserData({avatar: reader.result}).subscribe();
+      };
+    }
   }
 
 }

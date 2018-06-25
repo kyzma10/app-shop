@@ -7,5 +7,5 @@ export class Urls {
   static verifyEmail = `${environment.apiBase}/verify-email/`;
   static editProfile = `${environment.apiBase}/profile/`;
 
-  static advert = `${environment.apiBase}/adverts`;
+  static advert = `${environment.apiBase}/adverts/`;
 }

@@ -10,6 +10,7 @@ import { ProductModel } from "../core/models/product.model";
 
 export class ProductListComponent implements OnInit, OnDestroy {
   public products: ProductModel[] = [];
+  loading: boolean = false;
 
   constructor(private productService: ProductService) {}
 
@@ -20,8 +21,10 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
 
   public loadMore() {
+    this.loading = true;
     this.productService.getProductsMore().subscribe((res: ProductModel[]) => {
       res.forEach(item => this.products.push(item));
+      this.loading = false;
     });
   }
 

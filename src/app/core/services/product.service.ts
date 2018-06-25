@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {map, tap} from 'rxjs/internal/operators';
+import {delay, map, tap} from 'rxjs/internal/operators';
 import { ProductModel } from "../models/product.model";
 import {ResponseModel} from "../models/response.model";
 import {Urls} from '../urls';
@@ -16,6 +16,7 @@ export class ProductService {
   public getProducts(): Observable<any> {
     return this.http.get(`${Urls.advert}?limit=${this.limit}`)
       .pipe(
+        delay(5000),
         map((response: ResponseModel) => {
           const result: ProductModel[] = [];
           response.results.forEach(item => result.push(item));
@@ -33,6 +34,7 @@ export class ProductService {
   public getProductsMore() {
     return this.http.get(`${Urls.advert}?limit=${this.limitMore}`)
       .pipe(
+        delay(5000),
         map((response: ResponseModel) => {
           const result: ProductModel[] = [];
           response.results.forEach(item => result.push(item));
@@ -41,10 +43,10 @@ export class ProductService {
   }
 
   public addAdvert(res: any) {
-    const body: any = {
-      theme: 'new',
-      currency: '1'
-    };
-    return this.http.post(Urls.advert, body);
+    return this.http.post(Urls.advert, res);
+  }
+
+  public addImage(advert_pk: any, res: any) {
+    return this.http.post(`${Urls.advert}/${advert_pk}/image/`, res);
   }
 }
