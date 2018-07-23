@@ -4,7 +4,14 @@
   <div class="login__sidebar__input">
     <label for="username" ></label>
     <input type="text" name="username" placeholder="  Username" formControlName="username">
-    <div *ngIf="errors?.email" class="errors">
+
+    <div
+      class="errors"
+      *ngIf="signForm.get('username').getError('isEmpty') && signForm.get('username').dirty"
+    >This place must be not empty
+    </div>
+
+    <div *ngIf="errors?.username" class="errors">
       <ul *ngFor="let error of errors?.username">
         <li>{{error}}</li>
       </ul>
@@ -13,15 +20,42 @@
   <div class="login__sidebar__input">
     <label for="email" ></label>
     <input type="email" name="email" placeholder="  Email" formControlName="email">
+
+    <div
+      class="errors"
+      *ngIf="signForm.get('email').getError('required') && signForm.get('email').dirty"
+    >This field is required
+    </div>
+
+    <div
+      class="errors"
+      *ngIf="signForm.get('email').getError('pattern') && signForm.get('email').dirty"
+    >Please enter a valid email!
+    </div>
+
     <div *ngIf="errors?.email" class="errors">
       <ul *ngFor="let error of errors?.email">
         <li>{{error}}</li>
       </ul>
     </div>
   </div>
+
   <div class="login__sidebar__input">
     <label for="password" ></label>
     <input type="password" name="password" placeholder="  Password" formControlName="password">
+
+    <div
+      class="errors"
+      *ngIf="signForm.get('password').getError('required') && signForm.get('password').dirty"
+    >This field is required
+    </div>
+
+    <div
+      class="errors"
+      *ngIf="signForm.get('password').getError('minlength') && signForm.get('password').dirty"
+    >Your password to short!
+    </div>
+
     <div *ngIf="errors?.password1" class="errors">
       <ul *ngFor="let error of errors?.password1">
         <li>{{error}}</li>
@@ -31,9 +65,28 @@
   <div class="login__sidebar__input">
     <label for="confirm_password" ></label>
     <input type="password"
-           name="password"
+           name="confirm_password"
            placeholder="  Confirm Password"
-           formControlName="confirm_password">
+           formControlName="confirm_password"/>
+
+    <div
+      class="errors"
+      *ngIf="signForm.get('confirm_password').getError('required') && signForm.get('confirm_password').dirty"
+    >This field is required
+    </div>
+
+    <div
+      class="errors"
+      *ngIf="signForm.get('confirm_password').getError('minlength') && signForm.get('confirm_password').dirty"
+    >Your password to short!
+    </div>
+
+    <div
+      class="errors"
+      *ngIf="signForm.get('confirm_password').getError('matchPassword') && signForm.get('confirm_password').dirty"
+    >Password dies not match!
+    </div>
+
     <div *ngIf="errors?.password2" class="errors">
       <ul *ngFor="let error of errors?.password2">
         <li>{{error}}</li>
@@ -45,6 +98,8 @@
       </ul>
     </div>
   </div>
-  <button type="submit" class="login__sidebar__login" [disabled]="!signForm.valid">Sign Up</button>
-  <p>{{ signForm.value | json }}</p>
+  <button type="submit"
+          [class]="!signForm.valid ? 'inactive' : 'login__sidebar__login'"
+          [disabled]="!signForm.valid"
+  >Sign Up</button>
 </form>

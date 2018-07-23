@@ -20,7 +20,7 @@ import { AddAdvertComponent } from './advert-list/add-advert/add-advert.componen
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthService} from './core/auth.service';
 import {AuthInterceptor} from './core/auth.interceptor';
-import { ProductListItemComponent } from './advert-list/advert-list-item/advert-list-item.component';
+import { AdvertListItemComponent } from './advert-list/advert-list-item/advert-list-item.component';
 import {AdvertResolver} from './core/services/advert.resolver';
 import {CookieService} from 'ngx-cookie-service';
 import {SessionService} from './core/session.service';
@@ -66,7 +66,7 @@ export function getAuthServiceConfigs() {
     NotFoundComponent,
     FooterComponent,
     AddAdvertComponent,
-    ProductListItemComponent,
+    AdvertListItemComponent,
     LoginComponent,
     RegisterComponent,
     ProfileComponent,

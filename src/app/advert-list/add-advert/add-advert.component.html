@@ -30,7 +30,6 @@
       <input type="checkbox" name="control" formControlName="control">
     </div>
     <button class="btn" [disabled]="!addAdvertForm.valid">Add advert</button>
-    <p>{{ addAdvertForm.value | json }}</p>
     <p *ngIf="addAdvertForm.invalid && addAdvertForm.controls['theme'].touched">No correct</p>
   </form>
 </section>

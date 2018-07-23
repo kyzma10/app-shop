@@ -4,6 +4,17 @@
   <div class="login__sidebar__input">
     <label for="email" ></label>
     <input type="text" name="email" placeholder="  Email" formControlName="email">
+
+    <div class="errors"
+      *ngIf="loginForm.get('email').getError('required') && loginForm.get('email').dirty"
+    >This field is required
+    </div>
+
+    <div class="errors"
+      *ngIf="loginForm.get('email').getError('pattern') && loginForm.get('email').dirty"
+    >Please enter a valid email!
+    </div>
+
     <div *ngIf="errors?.email" class="errors">
       <ul *ngFor="let error of errors?.email">
         <li>{{error}}</li>
@@ -13,12 +24,25 @@
   <div class="login__sidebar__input">
     <label for="password" ></label>
     <input type="password" name="password" placeholder="  Password" formControlName="password">
+
+    <div class="errors"
+      *ngIf="loginForm.get('password').getError('required') && loginForm.get('password').dirty"
+    >This field is required
+    </div>
+
+    <div class="errors"
+         *ngIf="loginForm.get('password').getError('minlength') && loginForm.get('password').dirty"
+    >Your password to short!
+    </div>
+
     <div *ngIf="errors?.non_field_errors" class="errors">
       <ul *ngFor="let error of errors?.non_field_errors">
         <li>{{error}}</li>
       </ul>
     </div>
   </div>
-  <button type="submit" class="login__sidebar__login" [disabled]="!loginForm.valid">Login</button>
-  <p>{{ loginForm.value | json }}</p>
+  <button type="submit"
+          [class]="!loginForm.valid ? 'inactive' : 'login__sidebar__login'"
+          [disabled]="!loginForm.valid" >Login
+  </button>
 </form>

@@ -1,14 +1,20 @@
 <app-header></app-header>
 <section class="profile">
+  <div class="form-group" >
+    <div class="avatar">Avatar:</div>
+    <label for="avatar"><span class="btn">Choice avatar</span></label>
+    <input
+      type="file"
+      name="avatar"
+      id="avatar"
+      class="form-control"
+      (change)="handleChange($event)"
+      multiple>
+  </div>
   <form (ngSubmit)="handleSubmit()" [formGroup]="profileForm" novalidate enctype="multipart/form-data">
     <div class="form-group">
       <label for="username">Username: </label>
       <input type="text" name="username" class="form-control" formControlName="username">
-    </div>
-    <div class="form-group" >
-      <div class="avatar">Avatar:</div>
-      <label for="avatar"><span class="btn">Choice avatar</span></label>
-      <input type="file" name="avatar" id="avatar" class="form-control" formControlName="avatar" multiple>
     </div>
     <div class="form-group">
       <label for="color_scheme">Color scheme: </label>
@@ -35,7 +41,5 @@
       <input type="text" name="location" class="form-control" formControlName="location">
     </div>
     <button class="btn" [disabled]="!profileForm.valid">Change profile</button>
-    <p>{{ profileForm.value | json }}</p>
   </form>
-  <input type="file" (change)="handleChange($event)">
 </section>

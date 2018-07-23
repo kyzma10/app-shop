@@ -16,4 +16,8 @@ export class UserService implements OnInit {
   changeUserData(data: any) {
     return this.http.patch(Urls.editProfile, data);
   }
+
+  tokenVerify(token: string) {
+    return this.http.post(Urls.tokenVerify, {token: token})
+  }
 }

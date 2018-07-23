@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import {delay, map, tap} from 'rxjs/internal/operators';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {catchError, delay, map, tap} from 'rxjs/internal/operators';
 import { ProductModel } from "../models/product.model";
 import {ResponseModel} from "../models/response.model";
 import {Urls} from '../urls';
 import {Observable} from 'rxjs/Rx';
+import {errorComparator} from 'tslint/lib/verify/lintError';
 
 @Injectable()
 export class ProductService {
@@ -20,15 +21,13 @@ export class ProductService {
         map((response: ResponseModel) => {
           const result: ProductModel[] = [];
           response.results.forEach(item => result.push(item));
-          return result;
-        }))
+          return result }),
+        catchError(this.handleError('getProducts')))
   }
 
   public getProduct(id) {
     return this.http.get(`${Urls.advert}/${id}`)
-      .pipe(
-      tap((response: any) => console.log(response))
-    );
+      .pipe(catchError(this.handleError('get product')))
   }
 
   public getProductsMore() {
@@ -38,8 +37,9 @@ export class ProductService {
         map((response: ResponseModel) => {
           const result: ProductModel[] = [];
           response.results.forEach(item => result.push(item));
-          return result;
-        }));
+          return result
+        }),
+        catchError(this.handleError('get more products')));
   }
 
   public addAdvert(res: any) {
@@ -48,5 +48,17 @@ export class ProductService {
 
   public addImage(advert_pk: any, res: any) {
     return this.http.post(`${Urls.advert}/${advert_pk}/image/`, res);
+  }
+
+  private handleError<T> (operation = 'operation') {
+    return (error: HttpErrorResponse): Observable<T> => {
+
+      const message = (error.error instanceof ErrorEvent) ?
+        error.error.message :
+        `server returned code ${error.status} with body "${error.error}"`;
+
+      throw new Error(`${operation} failed: ${message}`);
+    };
+
   }
 }

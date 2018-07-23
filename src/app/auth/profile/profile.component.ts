@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {UserService} from '../../core/user.service';
-import {SessionService} from '../../core/session.service';
 
 @Component({
   selector: 'app-profile',
@@ -10,11 +9,10 @@ import {SessionService} from '../../core/session.service';
 })
 export class ProfileComponent implements OnInit {
   profileForm: FormGroup;
-  constructor(private userService: UserService, private session: SessionService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.profileForm = new FormGroup({
-      avatar: new FormControl(),
       color_scheme: new FormControl(),
       email: new FormControl(),
       first_name: new FormControl(),
@@ -34,9 +32,7 @@ export class ProfileComponent implements OnInit {
       }
     }
 
-    this.userService.changeUserData(res).subscribe(
-      response => console.log(response),
-      error => console.log(error));
+    this.userService.changeUserData(res).subscribe();
   }
 
   handleChange(e) {

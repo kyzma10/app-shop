@@ -1,9 +1,10 @@
 @import "../../../styles/const";
 
 button {
-  font-size: 1.4rem;
   width: 100%;
   display: inline-block;
+  font-size: 1.4rem;
+  font-weight: 600;
   background-color: $color-button;
   color: $color-text-button;
   text-align: center;
@@ -11,6 +12,10 @@ button {
   border: none;
   outline: none;
   margin-top: 1.5rem;
+}
+
+.inactive {
+  background-color: rgba($color-button, .3);
 }
 
 input {
@@ -36,9 +41,8 @@ input::placeholder {
   color: $color-white;
 }
 
-input.ng-invalid.ng-touched {
+input.ng-invalid.ng-dirty {
   border-bottom: 4px solid red;
-  //border: 3px solid red;
 }
 
 .errors {

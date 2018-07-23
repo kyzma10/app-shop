@@ -4,6 +4,7 @@ button {
   font-size: 1.4rem;
   width: 100%;
   display: inline-block;
+  font-weight: 600;
   background-color: $color-button;
   color: $color-text-button;
   text-align: center;
@@ -11,6 +12,10 @@ button {
   border: none;
   outline: none;
   margin-top: 1.5rem;
+}
+
+.inactive {
+  background-color: rgba($color-button, .3);
 }
 
 input {
@@ -38,7 +43,6 @@ input::placeholder {
 
 input.ng-invalid.ng-touched {
   border-bottom: 4px solid red;
-  //border: 3px solid red;
 }
 
 .errors {

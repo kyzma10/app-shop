@@ -9,7 +9,7 @@ import {Observable} from 'rxjs/index';
   templateUrl: './advert-list-item.component.html',
   styleUrls: ['./advert-list-item.component.scss']
 })
-export class ProductListItemComponent implements OnInit {
+export class AdvertListItemComponent implements OnInit {
   currentSlide: number = 0;
   advert: any;
 
@@ -20,6 +20,7 @@ export class ProductListItemComponent implements OnInit {
   }
 
   ngOnInit() {
+
     if (this.advert.images && this.advert.images.length > 0) {
       for (let i = 0; i < this.advert.images.length; i++){
         if(i === 0) {
@@ -31,6 +32,7 @@ export class ProductListItemComponent implements OnInit {
 
   handleClick(): void {
     let currentItem = (this.currentSlide + 1) % this.slides.length;
+
     for(let i = 0; i < this.slides.length; i++) {
       if (i === currentItem) {
         this.slides[i].status = true;
@@ -39,15 +41,14 @@ export class ProductListItemComponent implements OnInit {
     this.currentSlide++;
   }
 
-  handleChange(e) {
+  handleChange(e, pk) {
     e.preventDefault();
     for (let i = 0; i < e.target.files.length; i++) {
       let reader = new FileReader();
       reader.readAsDataURL(e.target.files[i]);
       reader.onloadend = () => {
-        // console.log(reader.result);
-        this.product.addImage(this.advert.pk, reader.result).subscribe(response => console.log(response))
-        // this.userService.changeUserData({avatar: reader.result}).subscribe();
+        let body = {pk: pk, advert: pk, file: reader.result};
+        this.product.addImage(pk, body).subscribe()
       };
     }
   }

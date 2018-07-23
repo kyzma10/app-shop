@@ -33,9 +33,8 @@ export class AddAdvertComponent implements OnInit {
       }
     }
 
-    this.productService.addAdvert(result).subscribe((response: any)=> console.log(response), (error: any) => console.log(error));
-    // console.log(result);
-    // console.log(this.addAdvertForm.value);
+    this.productService.addAdvert(result)
+      .subscribe();
     this.addAdvertForm.reset();
   }
 
